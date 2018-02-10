@@ -8,8 +8,14 @@
 
         public int OrderQuantity { get; set; }
 
-        public string DebugHelper => StaticDebugHelper;
+        public string DebugMessage { get; set; }
 
-        public static string StaticDebugHelper { get; set; }
+        public BusinessOrder(int id, string name, int quantity, string debugMessage)
+        {
+            OrderId = id;
+            OrderName = name;
+            OrderQuantity = quantity;
+            DebugMessage = debugMessage;
+        }
     }
 }
