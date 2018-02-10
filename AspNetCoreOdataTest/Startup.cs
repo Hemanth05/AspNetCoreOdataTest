@@ -51,10 +51,10 @@ namespace AspNetCoreOdataTest
                 routeBuilder.MapODataServiceRoute("ODataRoute", "odata", builder.GetEdmModel());
 
                 //// Work-around for #1175
-                routeBuilder.EnableDependencyInjection(containerBuilder =>
-                    containerBuilder.AddService<ODataUriResolver>(
-                    Microsoft.OData.ServiceLifetime.Singleton,
-                    _ => app.ApplicationServices.GetRequiredService<ODataUriResolver>()));
+                //routeBuilder.EnableDependencyInjection(containerBuilder =>
+                //    containerBuilder.AddService<ODataUriResolver>(
+                //    Microsoft.OData.ServiceLifetime.Singleton,
+                //    _ => app.ApplicationServices.GetRequiredService<ODataUriResolver>()));
             });
 
             Mapper.Initialize(cfg =>

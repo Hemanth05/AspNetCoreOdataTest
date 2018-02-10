@@ -11,7 +11,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.0.0-beta1" />
+    <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.0.0-Nightly201802092319" />
   </ItemGroup>
 
   <ItemGroup>
