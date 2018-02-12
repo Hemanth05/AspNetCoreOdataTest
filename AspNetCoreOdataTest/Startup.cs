@@ -28,7 +28,7 @@ namespace AspNetCoreOdataTest
         {
             services.AddMvc();
             services.AddOData();
-            services.AddSingleton(sp => new ODataUriResolver() { EnableCaseInsensitive = true});
+            services.AddSingleton(sp => new ODataUriResolver() { EnableCaseInsensitive = true });
 
             var provider = services.BuildServiceProvider();
             Container = provider;
@@ -47,7 +47,7 @@ namespace AspNetCoreOdataTest
             builder.EnableLowerCamelCase();
 
             app.UseMvc(routeBuilder =>
-            {            
+            {
                 routeBuilder.MapODataServiceRoute("ODataRoute", "odata", builder.GetEdmModel());
 
                 //// Work-around for #1175
@@ -58,12 +58,18 @@ namespace AspNetCoreOdataTest
             });
 
             Mapper.Initialize(cfg =>
-                cfg.CreateMap<BusinessOrder, OrderDto>()
+            {
+                cfg.CreateMap<OrderEntity, OrderGraphDto>()
                     .ForMember(o => o.Id, o => o.MapFrom(v => v.OrderId))
                     .ForMember(o => o.Name, o => o.MapFrom(v => v.OrderName))
                     .ForMember(o => o.Quantity, o => o.MapFrom(v => v.OrderQuantity))
-                    .ForMember(o => o.DebugMessage, o => o.MapFrom(v => v.DebugMessage))
-            );
+                    .ForMember(o => o.GraphProperty, o => o.MapFrom(v => v.GraphProperty))
+                    .ForMember(o => o.CityAddress, o => o.MapFrom(v => v.Address.City))
+                    .ForMember(o => o.DebugMessage, o => o.MapFrom(v => v.DebugMessage));
+
+                cfg.CreateMap<AddressEntity, AddressDto>()
+                    .ForMember(o => o.City, o => o.MapFrom(v => v.City));
+            });
 
             Mapper.AssertConfigurationIsValid();
         }

@@ -7,7 +7,9 @@ namespace AspNetCoreOdataTest.Extensions
     {
         public static IQueryable<T> ApplyToQueryable<T>(this ODataQueryOptions queryOptions, IQueryable<T> data)
         {
-            return (IQueryable<T>)queryOptions.ApplyTo(data);
+            var ret = queryOptions.ApplyTo(data);
+            //var list = ret.Cast<T>().ToList();
+            return (IQueryable<T>)ret;
         }
     }
 }

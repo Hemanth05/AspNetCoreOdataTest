@@ -9,5 +9,7 @@
         public int Quantity { get; set; }
 
         public string DebugMessage { get; set; }
+
+        public string CityAddress { get; set; }
     }
 }
