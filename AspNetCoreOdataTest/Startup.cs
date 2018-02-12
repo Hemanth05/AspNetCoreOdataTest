@@ -43,7 +43,7 @@ namespace AspNetCoreOdataTest
             }
 
             var builder = new ODataConventionModelBuilder(app.ApplicationServices);
-            builder.EntitySet<OrderDto>("Orders");
+            builder.EntitySet<OrderGraphDto>("OrderGraph");
             builder.EnableLowerCamelCase();
 
             app.UseMvc(routeBuilder =>
